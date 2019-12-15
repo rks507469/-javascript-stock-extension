@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Fetching the data os the stocks</title>
 </head>
+
 <body>
 
 
   <script type="text/javascript">
     //fetching the json file from the Extension of the https://www.alphavantage.co/
-    //let companyName;
+    let companyName;
     let apiKey = "LVQWDSUF6EKCBVN8";
-    const api_url = 'https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=MSFT&interval=5min&outputsize=full&apikey=' + apiKey;
+    const api_url =
+      'https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=MSFT&interval=5min&outputsize=full&apikey=' +
+      apiKey;
     async function getData() {
       const response = await fetch(api_url);
       const data = await response.json();
@@ -22,4 +26,5 @@
     getData();
   </script>
 </body>
+
 </html>
