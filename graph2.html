@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Fetch Api and CSV file and Graphing it</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js" charset="utf-8"></script>
+</head>
+
+<body>
+    <canvas id="myChart" height="50"></canvas>
+
+  <script type="text/javascript">
+    //the problem occued here is that the get data is running slow and the chart is made first so to remove that problem make the graph function as the async function and wait till the data is being fetched
+
+    chartIt();
+
+    async function chartIt() {
+      const data = await getData();
+      //forming the graph
+      const ctx = document.getElementById('myChart').getContext('2d');
+      const myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: data.xs,
+          datasets: [{
+            label: 'Combined Land-surface Air and Sea-Surface Water Temprature in C°',
+            data: data.ys,
+            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+            borderColor: 'rgba(255, 99, 132, 1)',
+            borderWidth: 1,
+            fill: false
+          }]
+        },
+        options: {
+          scales: {
+            yAxes: [{
+              ticks: {
+                // Include a degree sign in the ticks
+                callback: function(value, index, values) {
+                  return value + '°';
+                }
+              }
+            }]
+          }
+        }
+      });
+    }
+
+    //sources of my Csv file
+    //https://data.giss.nasa.gov/gistemp/
+
+    //getting the Csv File and using it fetch the data and console logging it into the browser to see the things in to the browser
+
+    async function getData() {
+      const xs = [];
+      const ys = [];
+      const response = await fetch('ZonAnn.Ts+dSST.csv');
+      const data = await response.text();
+
+      const table = data.split('\n').slice(1);
+      table.forEach(row => {
+        const cols = row.split(',');
+        const year = cols[0];
+        xs.push(year);
+        const temp = cols[1];
+        //we are using the parseFloat beacuse the data fetched from the file is in String format so we will convert it into the integer and add the 14.
+        ys.push(parseFloat(temp) + 14);
+        console.log(year, temp);
+      });
+      return {
+        xs,
+        ys
+      };
+    }
+  </script>
+
+</body>
+</html>
