@@ -9,10 +9,11 @@
 </head>
 
 <body>
+  Sample Data : <span id="dataSpan"></span>
 
 
   <script type="text/javascript">
-    //fetching the json file from the Extension of the https://www.alphavantage.co/
+    //fetching the json file from the API of the https://www.alphavantage.co/
     let companyName;
     let apiKey = "LVQWDSUF6EKCBVN8";
     const api_url =
@@ -21,8 +22,12 @@
     async function getData() {
       const response = await fetch(api_url);
       const data = await response.json();
-      console.log(data);
+      //const {MetaData} = data;
+      //document.getElementById("dataSpan").textContent = MetaData;
+      console.log(data.MetaData);
+      //this is not working
     }
+    
     //step 1. feth the data from the external Api and then read it properly. Done!
     //step 2. use the fetched data and extract the  general information from it.
     //step 3. information like date and time of the updation of the price.
