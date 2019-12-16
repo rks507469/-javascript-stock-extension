@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Fetching the data os the stocks from the finnhub.io</title>
+</head>
+
+<body>
+  Sample Data : <span id="dataSpan"></span>
+
+
+  <script type="text/javascript">
+    //fetching the json file from the API of the https://finnhub.io/
+    //this is giving me the error of the CROS access
+    let companyName = "AAPL";
+    let token = "bnrhmsvrh5rfc44sbmk0";
+    const api_url = "https://finnhub.io/api/v1/stock/profile?symbol="+ companyName +"&token=" + token;
+    async function getData() {
+      const response = await fetch(api_url);
+      const data = await response.json();
+      //const {MetaData} = data;
+      //document.getElementById("dataSpan").textContent = MetaData;
+      console.log(data);
+      //this is not working
+    }
+    
+    //step 1. feth the data from the external Api and then read it properly. Done!
+    //step 2. use the fetched data and extract the  general information from it.
+    //step 3. information like date and time of the updation of the price.
+    //step 4. use the input box to configure it for the other companies.
+    //step 5. get the various API keys and make changes to it after calling it for the 500 times.
+
+    getData();
+  </script>
+</body>
+
+</html>
