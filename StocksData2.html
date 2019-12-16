@@ -13,14 +13,24 @@
 
 
   <script type="text/javascript">
+     
     //fetching the json file from the API of the https://finnhub.io/
     //this is giving me the error of the CROS access
+    //check for the cros site resorce sharing
+    //how to give headers to cors to obtain the data
+    //
     let companyName = "AAPL";
     let token = "bnrhmsvrh5rfc44sbmk0";
-    const api_url = "https://finnhub.io/api/v1/stock/profile?symbol="+ companyName +"&token=" + token;
+    const api_url = "https://finnhub.io/api/v1/stock/profile?symbol=AAPL&token=" + token;
     async function getData() {
-      const response = await fetch(api_url);
-      const data = await response.json();
+      const response = await fetch(api_url,{
+        mode: "cors",
+        headers: {
+          'Access-Control-Allow-Origin' : 'https://finnhub.io/*'
+        }
+      });
+      
+      const data = response.type;
       //const {MetaData} = data;
       //document.getElementById("dataSpan").textContent = MetaData;
       console.log(data);
