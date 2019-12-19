@@ -19,22 +19,25 @@
     //check for the cros site resorce sharing
     //how to give headers to cors to obtain the data
     //
-    let companyName = "AAPL";
+    const proxyUrl = "https://cors-anywhere.herokuapp.com";
     let token = "bnrhmsvrh5rfc44sbmk0";
     const api_url = "https://finnhub.io/api/v1/stock/profile?symbol=AAPL&token=" + token;
     async function getData() {
-      const response = await fetch(api_url,{
-        mode: "cors",
-        headers: {
-          'Access-Control-Allow-Origin' : 'https://finnhub.io/*'
-        }
-      });
-      
-      const data = response.type;
+      //const response = await fetch(proxyUrl + '/' + api_url);
+      //const data = response.json;
       //const {MetaData} = data;
       //document.getElementById("dataSpan").textContent = MetaData;
-      console.log(data);
+      //console.log(data);
       //this is not working
+
+      var request = new XMLHttpRequest();
+      request.open('GET', proxyUrl + '/' + api_url , true);
+      request.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+      request.responseType = 'json';
+      request.onload = function() {
+        var data = request.response;
+        console.log(data);
+      }
     }
     
     //step 1. feth the data from the external Api and then read it properly. Done!
