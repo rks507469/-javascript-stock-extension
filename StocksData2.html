@@ -23,7 +23,13 @@
     let token = "bnrhmsvrh5rfc44sbmk0";
     const api_url = "https://finnhub.io/api/v1/stock/profile?symbol=AAPL&token=" + token;
     async function getData() {
-      const response = await fetch(proxyUrl + '/' + api_url);
+      const response = await fetch(api_url, {
+        headers: {
+          AccessControlAllowOrigin : "https://finnhub.io/*",
+          AccessControlAllowMethods : "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+          AccessControlAllowHeaders : "Origin, Content-Type, X-Auth-Token"
+        }
+      });
       const data = response.json;
       document.getElementById("dataSpan").textContent = data;
       console.log(data);
