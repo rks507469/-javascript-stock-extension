@@ -9,7 +9,7 @@ type: 'line',
 data: {
     labels: data.xs,
     datasets: [{
-    label: 'Combined Land-surface Air and Sea-Surface Water Temprature in C°',
+    label: 'Temprature in C°',
     data: data.ys,
     backgroundColor: 'rgba(255, 99, 132, 0.2)',
     borderColor: 'rgba(255, 99, 132, 1)',
@@ -35,7 +35,7 @@ options: {
 async function getData() {
 const xs = [];
 const ys = [];
-const response = await fetch('ZonAnn.Ts+dSST.csv');
+const response = await fetch('test.csv');
 const data = await response.text();
 
 const table = data.split('\n').slice(1);
