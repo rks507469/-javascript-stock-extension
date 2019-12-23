@@ -17,14 +17,14 @@
     let companyName;
     let apiKey = "LVQWDSUF6EKCBVN8";
     const api_url =
-      'https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=MSFT&interval=5min&outputsize=full&apikey=' +
+      'https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=AAPL&interval=5min&outputsize=full&apikey=' +
       apiKey;
     async function getData() {
       const response = await fetch(api_url);
       const data = await response.json();
-      //const {MetaData} = data;
+      //const {} = data;
       //document.getElementById("dataSpan").textContent = MetaData;
-      console.log(data.MetaData);
+      //console.log(data);
       //this is not working
     }
     
