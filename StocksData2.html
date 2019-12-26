@@ -18,31 +18,38 @@
     //this is giving me the error of the CROS access
     //check for the cros site resorce sharing
     //how to give headers to cors to obtain the data
-    //
-    const proxyUrl = "https://cors-anywhere.herokuapp.com";
-    let token = "bnrhmsvrh5rfc44sbmk0";
-    const api_url = "https://finnhub.io/api/v1/stock/profile?symbol=AAPL&token=" + token;
+    
+    /*
+    Potential Solution found : 
+    create your own .htaccess file and give your own headers to manage the config of the headers
+    */
+
+    //this is method 1
+    // const proxyUrl = "https://cors-anywhere.herokuapp.com";
+    // let token = "bnrhmsvrh5rfc44sbmk0";
+    // const api_url = "https://finnhub.io/api/v1/stock/profile?symbol=AAPL&token=" + token;
     async function getData() {
-      // const response = await fetch(api_url, {
-      //   credentials : 'same-origin',
-      //   method : 'GET',
-      //   headers: {
-      //     'Content-Type' : 'application/json',
-      //   }
-      // });
-      // const data = response.json;
-      // document.getElementById("dataSpan").textContent = data;
-      // console.log(data);
+    //   const response = await fetch(api_url, {
+    //     credentials : 'same-origin',
+    //     method : 'GET',
+    //     headers: {
+    //       'Content-Type' : 'application/json',
+    //     }
+    //   });
+    //   const data = response.json;
+    //   document.getElementById("dataSpan").textContent = data;
+    //   console.log(data);
       //this is not working
 
-      var request = new XMLHttpRequest();
-      request.open('GET', proxyUrl + '/' + api_url , true);
-      request.setRequestHeader("X-Requested-With", "XMLHttpRequest");
-      request.responseType = 'json';
-      request.onload = function() {
-        var data = request.response;
-        console.log(data);
-      }
+      //this is method 2
+      // var request = new XMLHttpRequest();
+      // request.open('GET', proxyUrl + '/' + api_url , true);
+      // request.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+      // request.responseType = 'json';
+      // request.onload = function() {
+      //   var data = request.response;
+      //   console.log(data);
+      // }
       //this thing is not returning any error nor the data
     }
     
