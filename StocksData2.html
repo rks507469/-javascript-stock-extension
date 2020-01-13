@@ -51,6 +51,23 @@
       //   console.log(data);
       // }
       //this thing is not returning any error nor the data
+
+      //this is the method 3 which i am gonna try
+      let response = await fetch('https://finnhub.io/api/v1/stock/profile?symbol=AAPL&token=bnrhmsvrh5rfc44sbmk0', {
+        method: 'GET',
+        headers: {
+          'content-type': 'application/json',
+          'api-key': 'bnrhmsvrh5rfc44sbmk0',
+          'host': 'https://finnhub.io/*',
+          'Access-Control-Request-Method': 'GET',
+          'origin': 'http://127.0.0.1:5500/StocksData2.html',
+          'Access-Control-Allow-Origin': 'http://127.0.0.1:5500/StocksData2.html',
+          'Access-Control-Allow-Credentials': true
+        }
+      });
+      const data = response.json;
+      document.getElementById("dataSpan").textContent = data;
+      console.log(data);
     }
     
     //step 1. feth the data from the external Api and then read it properly. Done!
