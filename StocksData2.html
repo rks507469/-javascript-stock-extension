@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Fetching the data os the stocks from the finnhub.io</title>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -43,7 +44,7 @@
 
       //this is method 2
       // var request = new XMLHttpRequest();
-      // request.open('GET', proxyUrl + '/' + api_url , true);
+      // request.open('GET',api_url , true);
       // request.setRequestHeader("X-Requested-With", "XMLHttpRequest");
       // request.responseType = 'json';
       // request.onload = function() {
@@ -53,21 +54,38 @@
       //this thing is not returning any error nor the data
 
       //this is the method 3 which i am gonna try
-      let response = await fetch('https://finnhub.io/api/v1/stock/profile?symbol=AAPL&token=bnrhmsvrh5rfc44sbmk0', {
-        method: 'GET',
-        headers: {
-          'content-type': 'application/json',
-          'api-key': 'bnrhmsvrh5rfc44sbmk0',
-          'host': 'https://finnhub.io/*',
-          'Access-Control-Request-Method': 'GET',
-          'origin': 'http://127.0.0.1:5500/StocksData2.html',
-          'Access-Control-Allow-Origin': 'http://127.0.0.1:5500/StocksData2.html',
-          'Access-Control-Allow-Credentials': true
-        }
-      });
-      const data = response.json;
-      document.getElementById("dataSpan").textContent = data;
-      console.log(data);
+        //  let response = await fetch('https://finnhub.io/api/v1/stock/profile?symbol=AAPL&token=bnrhmsvrh5rfc44sbmk0'/*, {
+        // //   method: 'GET',
+        // //   headers: {
+        // //     'Access-Control-Allow-Origin': '*',
+        // //     'Access-Control-Allow-Methods': 'GET, POST',
+        // //     'Access-Control-Allow-Headers': 'accept',
+        // //     'Access-Control-Max-Age': '1728000'
+        // //   }
+        //  }*/);
+        // const data = response.json;
+        // document.getElementById("dataSpan").textContent = data;
+        // console.log(data.type);
+
+      //the 4th method is with ajax
+      // $.ajax({
+      //           type: 'GET',
+      //           url: 'https://finnhub.io/api/v1/stock/profile?symbol=AAPL&token=bnrhmsvrh5rfc44sbmk0',
+      //           headers: {
+      //             'Access-Control-Allow-Credentials' : true,
+      //             'Access-Control-Allow-Origin':'*',
+      //             'Access-Control-Allow-Methods':'GET',
+      //             'Access-Control-Allow-Headers':'application/json',
+      //           },
+      //           success: function(data) {
+      //             console.log(data);
+      //           },
+      //           error: function(error) {
+      //             console.log("FAIL....=================");
+      //           }
+      //         });
+
+     // the next attempt will be made in the day
     }
     
     //step 1. feth the data from the external Api and then read it properly. Done!
