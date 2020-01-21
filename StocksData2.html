@@ -30,16 +30,16 @@
     // let token = "bnrhmsvrh5rfc44sbmk0";
     // const api_url = "https://finnhub.io/api/v1/stock/profile?symbol=AAPL&token=" + token;
     async function getData() {
-    //   const response = await fetch(api_url, {
-    //     credentials : 'same-origin',
-    //     method : 'GET',
-    //     headers: {
-    //       'Content-Type' : 'application/json',
-    //     }
-    //   });
-    //   const data = response.json;
-    //   document.getElementById("dataSpan").textContent = data;
-    //   console.log(data);
+      //   const response = await fetch(api_url, {
+      //     credentials : 'same-origin',
+      //     method : 'GET',
+      //     headers: {
+      //       'Content-Type' : 'application/json',
+      //     }
+      //   });
+      //   const data = response.json;
+      //   document.getElementById("dataSpan").textContent = data;
+      //   console.log(data);
       //this is not working
 
       //this is method 2
@@ -54,18 +54,18 @@
       //this thing is not returning any error nor the data
 
       //this is the method 3 which i am gonna try
-        //  let response = await fetch('https://finnhub.io/api/v1/stock/profile?symbol=AAPL&token=bnrhmsvrh5rfc44sbmk0'/*, {
-        // //   method: 'GET',
-        // //   headers: {
-        // //     'Access-Control-Allow-Origin': '*',
-        // //     'Access-Control-Allow-Methods': 'GET, POST',
-        // //     'Access-Control-Allow-Headers': 'accept',
-        // //     'Access-Control-Max-Age': '1728000'
-        // //   }
-        //  }*/);
-        // const data = response.json;
-        // document.getElementById("dataSpan").textContent = data;
-        // console.log(data.type);
+      //  let response = await fetch('https://finnhub.io/api/v1/stock/profile?symbol=AAPL&token=bnrhmsvrh5rfc44sbmk0'/*, {
+      // //   method: 'GET',
+      // //   headers: {
+      // //     'Access-Control-Allow-Origin': '*',
+      // //     'Access-Control-Allow-Methods': 'GET, POST',
+      // //     'Access-Control-Allow-Headers': 'accept',
+      // //     'Access-Control-Max-Age': '1728000'
+      // //   }
+      //  }*/);
+      // const data = response.json;
+      // document.getElementById("dataSpan").textContent = data;
+      // console.log(data.type);
 
       //the 4th method is with ajax
       // $.ajax({
@@ -86,19 +86,17 @@
       //         });
 
      // the next attempt will be made in the day with the web sockets
-     //this is working but not for all the stocks.
-
-     const socket = new WebSocket('wss://ws.finnhub.io?token=bnrhmsvrh5rfc44sbmk0');
-
-      // Connection opened -> Subscribe
-      socket.addEventListener('open', function (event) {
-          socket.send(JSON.stringify({'type':'subscribe', 'symbol': 'NFLX'}))
-      });
-
-      // Listen for messages
-      socket.addEventListener('message', function (event) {
-          console.log('Message from server ', event.data);
-      });
+      //this is working but not for all the stocks.
+      
+      // const socket = new WebSocket('wss://ws.finnhub.io?token=bnrhmsvrh5rfc44sbmk0');
+      //   // Connection opened -> Subscribe
+      //   socket.addEventListener('open', function (event) {
+      //       socket.send(JSON.stringify({'type':'subscribe', 'symbol': 'NFLX'}))
+      //   });
+      //   // Listen for messages
+      //   socket.addEventListener('message', function (event) {
+      //       console.log('Message from server ', event.data);
+      //   });
     }
     
     //step 1. feth the data from the external Api and then read it properly. Done!
