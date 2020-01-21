@@ -86,6 +86,19 @@
       //         });
 
      // the next attempt will be made in the day with the web sockets
+     //this is working but not for all the stocks.
+
+     const socket = new WebSocket('wss://ws.finnhub.io?token=bnrhmsvrh5rfc44sbmk0');
+
+      // Connection opened -> Subscribe
+      socket.addEventListener('open', function (event) {
+          socket.send(JSON.stringify({'type':'subscribe', 'symbol': 'NFLX'}))
+      });
+
+      // Listen for messages
+      socket.addEventListener('message', function (event) {
+          console.log('Message from server ', event.data);
+      });
     }
     
     //step 1. feth the data from the external Api and then read it properly. Done!
