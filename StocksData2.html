@@ -87,7 +87,7 @@
 
      // the next attempt will be made in the day with the web sockets
       //this is working but not for all the stocks.
-      
+
       // const socket = new WebSocket('wss://ws.finnhub.io?token=bnrhmsvrh5rfc44sbmk0');
       //   // Connection opened -> Subscribe
       //   socket.addEventListener('open', function (event) {
@@ -97,6 +97,11 @@
       //   socket.addEventListener('message', function (event) {
       //       console.log('Message from server ', event.data);
       //   });
+
+      //this is another approach
+      //1. find the current price of the stocks user want to find
+      //2. find the volume data of the stocks
+      //3. searching of the stock in the various market
     }
     
     //step 1. feth the data from the external Api and then read it properly. Done!
