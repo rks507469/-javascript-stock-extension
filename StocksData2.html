@@ -102,6 +102,19 @@
       //1. find the current price of the stocks user want to find
       //2. find the volume data of the stocks
       //3. searching of the stock in the various market
+
+      //approach 6th (Eureka This thing works!!!!)
+      //using the website of the world trade data
+      //making the request
+      const url = new URL("https://api.worldtradingdata.com/api/v1/stock");
+      let params = {
+        'symbol' : 'AAPL',
+        'api_token' : 'EPpiK8ye36144w7A3eGMQzdNku6AnflXrRHjGaN572jtudY1zXxtCWdQ0mPg'
+      };
+      Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
+      fetch(url, {
+        method : 'GET',
+      }).then(response => response.json()).then(json => console.log(json));
     }
     
     //step 1. feth the data from the external Api and then read it properly. Done!
