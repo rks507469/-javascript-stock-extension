@@ -13,12 +13,11 @@
 
 
   <script type="text/javascript">
-     
     //fetching the json file from the API of the https://finnhub.io/
     //this is giving me the error of the CROS access
     //check for the cros site resorce sharing
     //how to give headers to cors to obtain the data
-    
+
     /*
     Potential Solution found : 
     create your own .htaccess file and give your own headers to manage the config of the headers
@@ -84,7 +83,7 @@
       //           }
       //         });
 
-     // the next attempt will be made in the day with the web sockets
+      // the next attempt will be made in the day with the web sockets
       //this is working but not for all the stocks.
 
       // const socket = new WebSocket('wss://ws.finnhub.io?token=bnrhmsvrh5rfc44sbmk0');
@@ -107,15 +106,37 @@
       //making the request
       const url = new URL("https://api.worldtradingdata.com/api/v1/stock");
       let params = {
-        'symbol' : 'AAPL',
-        'api_token' : 'EPpiK8ye36144w7A3eGMQzdNku6AnflXrRHjGaN572jtudY1zXxtCWdQ0mPg'
+        'symbol': 'AAPL',
+        'api_token': 'EPpiK8ye36144w7A3eGMQzdNku6AnflXrRHjGaN572jtudY1zXxtCWdQ0mPg'
       };
       Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
-      fetch(url, {
-        method : 'GET',
-      }).then(response => response.json()).then(json => console.log(json));
+      // const response = fetch(url, {
+      //   method: 'GET',
+      // }).then(response => response.json()).then(json => console.log(json));
+
+      //this thing also works
+      //this is giving me the price of the Single Company
+      // const response = await fetch(url, {
+      //   method: 'GET',
+      // });
+
+      // if(response.ok) {
+      //   let json = await response.json();
+      //   console.log(json);
+      // } else {
+      //   alert("Response-Error" + response.status);
+      // }
+
+      //this is how to read the json data which is received
+      // let json = {"symbols_requested":1,"symbols_returned":1,"data":[{"symbol":"AAPL","name":"Apple Inc.","currency":"USD","price":"324.34","price_open":"324.45","day_high":"327.85","day_low":"321.38","52_week_high":"327.85","52_week_low":"160.23","day_change":"6.65","change_pct":"2.09","close_yesterday":"317.69","market_cap":"1421916372992","volume":"53002777","volume_avg":"32771333","shares":"4384030208","stock_exchange_long":"NASDAQ Stock Exchange","stock_exchange_short":"NASDAQ","timezone":"EST","timezone_name":"America/New_York","gmt_offset":"-18000","last_trade_time":"2020-01-29 16:00:01","pe":"25.75","eps":"12.60"}]}
+      // console.log(json.data[0].symbol);
+      // console.log(json.data[0].name);
+      // console.log(json.data[0].price);
+
+      //will try to import the interday data
+      
     }
-    
+
     //step 1. feth the data from the external Api and then read it properly. Done!
     //step 2. use the fetched data and extract the  general information from it.
     //step 3. information like date and time of the updation of the price.
