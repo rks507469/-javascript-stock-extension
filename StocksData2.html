@@ -134,7 +134,26 @@
       // console.log(json.data[0].price);
 
       //will try to import the interday data
-      
+      //this thing works
+      // const urlInterday = new URL("https://intraday.worldtradingdata.com/api/v1/intraday");
+      // let paramsInterday = {
+      //   "symbol": "AAPL",
+      //   "api_token": "EPpiK8ye36144w7A3eGMQzdNku6AnflXrRHjGaN572jtudY1zXxtCWdQ0mPg",
+      //   "interval": "1",
+      //   "range": "1",
+      // };
+      // Object.keys(paramsInterday).forEach(key => urlInterday.searchParams.append(key, paramsInterday[key]));
+      // const response = await fetch(urlInterday, {
+      //   method: 'GET',
+      // });
+      // if(response.ok) {
+      //   let json = await response.json();
+      //   console.log(json);
+      // } else {
+      //   alert("Response_Error" + response.status);
+      // }
+
+      //now how to read the data which i am receving through the api of the interday      
     }
 
     //step 1. feth the data from the external Api and then read it properly. Done!
