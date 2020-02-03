@@ -78,14 +78,11 @@ async function getData() {
     // price.push(jsondata2.data[0].price);
     // console.log(price);
     // return price;
-    /*Now i will try to plot the interday data to the graph on using the graph js*/
-    //exact length array
+    /*Now i will try to plot the interday datat to the graph on using the graph js*/
     const timeData = [];
     const dailyHigh = [];
-    //cropped length array
     let timeDataCropped = [];
     let dailyHighCropped = [];
-    //json received from the server
     let json;
 
     const urlInterday = new URL("https://intraday.worldtradingdata.com/api/v1/intraday");
