@@ -84,13 +84,18 @@ async function getData() {
     let timeDataCropped = [];
     let dailyHighCropped = [];
     let json;
+    //original api_token
+    //EPpiK8ye36144w7A3eGMQzdNku6AnflXrRHjGaN572jtudY1zXxtCWdQ0mPg
+    //fake api_tokens
+    /*
+    1. JYeRoYVxE3lgVlK3q7gjij42SEu8kVJsue0yhWcWMZyjry3ocRHlc587PZAv
+    2. new api : 5bbb3a664c57af13e48849459d749ee0
+    */
 
-    const urlInterday = new URL("https://intraday.worldtradingdata.com/api/v1/intraday");
+    const urlInterday = new URL("http://api.marketstack.com/v1/intraday");
     let paramsInterday = {
-        "symbol": "AAPL",
-        "api_token": "EPpiK8ye36144w7A3eGMQzdNku6AnflXrRHjGaN572jtudY1zXxtCWdQ0mPg",
-        "interval": "1",
-        "range": "1",
+        "access_key": "5bbb3a664c57af13e48849459d749ee0",
+        "symbols": "AAPL"
     };
     Object.keys(paramsInterday).forEach(key => urlInterday.searchParams.append(key, paramsInterday[key]));
     const response = await fetch(urlInterday, {
@@ -101,12 +106,14 @@ async function getData() {
     } else {
         alert("Response_Error" + response.status);
     }
+    //console.log(json.data);
     //function for the iterating throught to the nested json object
     function jsonToArray(json) {
-        var keys = Object.keys(json);
+        //console.log(json.data);
+        const keys = json.data;
         keys.forEach(function (key) {
-            timeData.push(key.substr(11, 5));
-            dailyHigh.push(json[key].high);
+            timeData.push(key.date.substr(11, 5));
+            dailyHigh.push(key.high);
         });
         timeDataCropped = timeData.slice(0, 20);
         dailyHighCropped = dailyHigh.slice(0, 20);
@@ -115,8 +122,8 @@ async function getData() {
             dailyHighCropped
         };
     }
-    console.log(jsonToArray(json.intraday));
-    return jsonToArray(json.intraday);
+    //console.log(jsonToArray(json));
+    return jsonToArray(json);
     // for(var i in json.intraday) {
     //     dailyHigh.push([i, json.intraday[i]]);
     //     console.log(json.intraday[i].high);
